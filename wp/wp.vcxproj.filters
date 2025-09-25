@@ -26,8 +26,16 @@
     <ClInclude Include="stb_image_write.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="..\libwebp-1.6.0-windows-x64\include\webp\decode.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\libwebp-1.6.0-windows-x64\lib\libwebp.lib" />
+    <Library Include="..\libwebp-1.6.0-windows-x64\lib\libwebpdemux.lib" />
+    <Library Include="..\libwebp-1.6.0-windows-x64\lib\libwebpmux.lib" />
   </ItemGroup>
 </Project>
