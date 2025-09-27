@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webp", "webp\webp.csproj", 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ArgTest", "ArgTest\ArgTest.vcxproj", "{EC579E57-9BFD-45B2-BDF4-89F5CBF99089}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bryutulTest", "bryutul\bryutul.vcxproj", "{FCF2DAB6-CB7E-499A-AC77-1E0A2E03F076}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +113,18 @@ Global
 		{EC579E57-9BFD-45B2-BDF4-89F5CBF99089}.Release|x64.Build.0 = Release|x64
 		{EC579E57-9BFD-45B2-BDF4-89F5CBF99089}.Release|x86.ActiveCfg = Release|Win32
 		{EC579E57-9BFD-45B2-BDF4-89F5CBF99089}.Release|x86.Build.0 = Release|Win32
+		{FCF2DAB6-CB7E-499A-AC77-1E0A2E03F076}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{FCF2DAB6-CB7E-499A-AC77-1E0A2E03F076}.Debug|Any CPU.Build.0 = Debug|x64
+		{FCF2DAB6-CB7E-499A-AC77-1E0A2E03F076}.Debug|x64.ActiveCfg = Debug|x64
+		{FCF2DAB6-CB7E-499A-AC77-1E0A2E03F076}.Debug|x64.Build.0 = Debug|x64
+		{FCF2DAB6-CB7E-499A-AC77-1E0A2E03F076}.Debug|x86.ActiveCfg = Debug|Win32
+		{FCF2DAB6-CB7E-499A-AC77-1E0A2E03F076}.Debug|x86.Build.0 = Debug|Win32
+		{FCF2DAB6-CB7E-499A-AC77-1E0A2E03F076}.Release|Any CPU.ActiveCfg = Release|x64
+		{FCF2DAB6-CB7E-499A-AC77-1E0A2E03F076}.Release|Any CPU.Build.0 = Release|x64
+		{FCF2DAB6-CB7E-499A-AC77-1E0A2E03F076}.Release|x64.ActiveCfg = Release|x64
+		{FCF2DAB6-CB7E-499A-AC77-1E0A2E03F076}.Release|x64.Build.0 = Release|x64
+		{FCF2DAB6-CB7E-499A-AC77-1E0A2E03F076}.Release|x86.ActiveCfg = Release|Win32
+		{FCF2DAB6-CB7E-499A-AC77-1E0A2E03F076}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
