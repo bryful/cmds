@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "cmds": {
+      "commandName": "Project",
+      "commandLineArgs": "aaa bbb \"ccc ddd eee\" ff"
+    }
+  }
+}
