@@ -80,7 +80,7 @@ class Program
 				Webp webp = new Webp(prms[0]);
 				if (!webp.ExistsDIrectory)
 				{
-					Console.WriteLine("[Image2jpeg] 指定されたディレクトリが存在しません。");
+					Console.WriteLine($"{webp.TargetDirectory} : [Image2jpeg] 指定されたディレクトリが存在しません。");
 					return;
 				}
 				bool result = webp.ConvertAllToJpeg();
