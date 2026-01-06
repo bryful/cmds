@@ -19,7 +19,7 @@ namespace cmds
 			return StrCmpLogicalW(x, y);
 		}
 	}
-	public class FileLister
+	public class FileUtl
 	{
 		static public string [] ListFiles(string dirPath, string searchPattern="*", bool searchAllSubDirs=false)
 		{
@@ -37,6 +37,24 @@ namespace cmds
 			};
 
 			result = Directory.EnumerateFiles(dirPath, searchPattern, options).ToArray();
+			return result;
+		}
+		static public string[] ListDirs(string dirPath, string searchPattern = "*", bool searchAllSubDirs = false)
+		{
+			string[] result = new String[0];
+			if (!Directory.Exists(dirPath))
+			{
+				return result;
+			}
+
+			var options = new EnumerationOptions
+			{
+				IgnoreInaccessible = true,       // アクセス権限のないフォルダを無視
+				RecurseSubdirectories = searchAllSubDirs,
+				ReturnSpecialDirectories = false  // "." や ".." を含めない
+			};
+
+			result = Directory.EnumerateDirectories(dirPath, searchPattern, options).ToArray();
 			return result;
 		}
 		static public string[] ListSort(string[] files)
@@ -62,6 +80,10 @@ namespace cmds
 				return new string[0];
 			}
 			return ListSort(flist.ToArray());
+		}
+		static public string[] getDirs(string dirPath)
+		{
+			return ListFiles(dirPath, "*", false);
 		}
 	}
 }

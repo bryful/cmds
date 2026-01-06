@@ -11,6 +11,7 @@ namespace cmds
 {
 	public class Webp
 	{
+		public bool DeleteSourceFile { get; set; } = false;
 		private string m_TargetDirectory = "";
 		public string TargetDirectory
 		{
@@ -24,7 +25,7 @@ namespace cmds
 			get
 			{
 				bool ret = false;
-				if (m_TargetDirectory != "") return ret;
+				if (m_TargetDirectory == "") return ret;
 				if (System.IO.Directory.Exists(m_TargetDirectory))
 				{
 					ret = true;
@@ -102,7 +103,7 @@ namespace cmds
 				Console.WriteLine("Error: Target directory does not exist.");
 				return false;
 			}
-			var files = cmds.FileLister.getImageFiles(m_TargetDirectory);
+			var files = cmds.FileUtl.getImageFiles(m_TargetDirectory);
 			foreach (var file in files)
 			{
 				string ext = System.IO.Path.GetExtension(file).ToLower();
@@ -115,6 +116,17 @@ namespace cmds
 					}
 					else
 					{
+						if (DeleteSourceFile)
+						{
+							try
+							{
+								System.IO.File.Delete(file);
+							}
+							catch (Exception ex)
+							{
+								Console.WriteLine($"Error deleting source file: {ex.Message}");
+							}
+						}
 						Console.WriteLine($"Converting: {Path.GetFileName(file)} -> {Path.GetFileName(dst)}");
 					}
 				}

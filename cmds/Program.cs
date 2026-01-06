@@ -8,6 +8,9 @@ class Program
 	{
 		ERR,
 		IMAGE2JPEG,
+		HEADERRENAME,
+		FSORT,
+		REFSORT
 	}
 	static ExecMode mode = ExecMode.ERR;
 	static void ShowHelp()
@@ -19,10 +22,22 @@ class Program
 				str += "Image2Jpeg - Jpegへ画像変換\r\n";
 				str += "\t使い方: Image2Jpeg <DirectoryPath> ...\r\n";
 				break;
+			case ExecMode.HEADERRENAME:
+				str += "HeaderRename - ファイル名の修正\r\n";
+				str += "\t使い方: HeaderRename <DirectoryPath> ...\r\n";
+				break;
+			case ExecMode.FSORT:
+				str += "FSort - ファイルをフォルダ分け\r\n";
+				str += "\t使い方: FSort <DirectoryPath> ...\r\n";
+				break;
+			case ExecMode.REFSORT:
+				str += "ReFSort - フォルダ分けをもとに戻す\r\n";
+				str += "\t使い方: ReFSort <DirectoryPath> ...\r\n";
+				break;
 			case ExecMode.ERR:
 			default:
 				str += "cmds - Cmd\r\n";
-				str += "\t使い方: cmds <functionKey> ...\r\n";
+				str += "\t使い方: cmds <functionKey> [params]...\r\n";
 				break;
 		}
 		Console.WriteLine(str);
@@ -46,6 +61,21 @@ class Program
 					mode = ExecMode.IMAGE2JPEG;
 					prms = args;
 					break;
+				case "headerrename":
+				case "hren":
+					mode = ExecMode.HEADERRENAME;
+					prms = args;
+					break;
+				case "fsort":
+				case "fs":
+					mode = ExecMode.FSORT;
+					prms = args;
+					break;
+				case "refsort":
+				case "rfs":
+					mode = ExecMode.REFSORT;
+					prms = args;
+					break;
 				default:
 					mode = ExecMode.ERR;
 					break;
@@ -60,6 +90,20 @@ class Program
 				case "image2jpeg":
 				case "tojpeg":
 					mode = ExecMode.IMAGE2JPEG;
+					prms = args.Skip(1).ToArray();
+					break;
+				case "headerrename":
+				case "hren":
+					mode = ExecMode.HEADERRENAME;
+					prms = args.Skip(1).ToArray();
+					break;
+				case "fsort":
+					mode = ExecMode.FSORT;
+					prms = args.Skip(1).ToArray();
+					break;
+				case "refsort":
+				case "rfs":
+					mode = ExecMode.REFSORT;
 					prms = args.Skip(1).ToArray();
 					break;
 				default:
@@ -83,7 +127,35 @@ class Program
 					Console.WriteLine($"{webp.TargetDirectory} : [Image2jpeg] 指定されたディレクトリが存在しません。");
 					return;
 				}
+				webp.DeleteSourceFile = true;
 				bool result = webp.ConvertAllToJpeg();
+				break;
+			case ExecMode.HEADERRENAME:
+				if (prms.Length <= 0)
+				{
+					ShowHelp();
+					return;
+				}
+				HR hR = new HR();
+				bool hrResult = hR.HeaderRename(prms[0]);
+				break;
+			case ExecMode.FSORT:
+				if (prms.Length <= 0)
+				{
+					ShowHelp();
+					return;
+				}
+				FSort fsort = new FSort(prms[0]);
+				fsort.SortFiles();
+				break;
+			case ExecMode.REFSORT:
+				if (prms.Length <= 0)
+				{
+					ShowHelp();
+					return;
+				}
+				FSort fsort2 = new FSort(prms[0]);
+				fsort2.ReSortFiles();
 				break;
 			case ExecMode.ERR:
 			default:
