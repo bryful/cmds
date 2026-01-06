@@ -16,11 +16,13 @@ class Program
 		switch (mode)
 		{
 			case ExecMode.IMAGE2JPEG:
+				str += "Image2Jpeg - Jpegへ画像変換\r\n";
+				str += "\t使い方: Image2Jpeg <DirectoryPath> ...\r\n";
 				break;
 			case ExecMode.ERR:
 			default:
 				str += "cmds - Cmd\r\n";
-				str += "\t使い方: cmds <mode> ...\r\n";
+				str += "\t使い方: cmds <functionKey> ...\r\n";
 				break;
 		}
 		Console.WriteLine(str);
@@ -29,15 +31,6 @@ class Program
 	static void Main(string[] args)
 	{
 		string[] prms = new string[0];
-		foreach (string arg in args)
-		{
-			Console.WriteLine(arg);
-		}
-		if (args.Length < 1)
-		{
-			ShowHelp();
-			return;
-		}
 		string? processPath = Environment.ProcessPath;
 		string exename = processPath != null
 			? Path.GetFileNameWithoutExtension(processPath).ToLower()
@@ -70,6 +63,7 @@ class Program
 					prms = args.Skip(1).ToArray();
 					break;
 				default:
+					mode = ExecMode.ERR;
 					break;
 			}
 		}
