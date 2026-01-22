@@ -5,6 +5,26 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <NuGetAuditMode>direct</NuGetAuditMode>
+    <Title>cmds</Title>
+    <Authors>bry-ful</Authors>
+    <Description>File Utils Commands</Description>
+    <Copyright>bry-ful</Copyright>
+    <PackageProjectUrl>https://github.com/bryful/cmds</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/bryful/cmds</RepositoryUrl>
+    <NeutralLanguage>ja-JP</NeutralLanguage>
+    
+    
+    <!-- 公開設定 -->
+    <PublishSingleFile>true</PublishSingleFile>
+    <PublishTrimmed>false</PublishTrimmed>
+    <SelfContained>false</SelfContained>
+
+    <!-- セキュリティソフト対策 -->
+    <DebugType>embedded</DebugType>
+    <Deterministic>true</Deterministic>
+    <PublishReadyToRun>false</PublishReadyToRun>
+    <EnableCompressionInSingleFile>false</EnableCompressionInSingleFile>
   </PropertyGroup>
 
   <ItemGroup>

@@ -59,10 +59,11 @@ namespace cmds
 			{
 				return false;
 			}
-			var files = FileUtl.getImageFiles(m_TargetDirectory);
+			var files = FileUtl.ListFiles(m_TargetDirectory,"*",false);
 			foreach (var file in files)
 			{
 				string fileName = Path.GetFileName(file);
+				string e = Path.GetExtension(file).ToLower();
 				string bracketContent = GetBracketContent(fileName);
 				if (string.IsNullOrEmpty(bracketContent))
 				{
@@ -77,6 +78,7 @@ namespace cmds
 				if (!File.Exists(destPath))
 				{
 					File.Move(file, destPath);
+					Console.WriteLine($"Moved: {Path.GetFileName(file)} -> {bracketContent}");
 				}
 			}
 			return true;
@@ -99,12 +101,14 @@ namespace cmds
 					if (!File.Exists(destPath))
 					{
 						File.Move(file, destPath);
+						Console.WriteLine($"Moved: {Path.GetFileName(file)}");
 					}
 				}
 				// ディレクトリが空なら削除
 				if (Directory.GetFiles(dir).Length == 0 && Directory.GetDirectories(dir).Length == 0)
 				{
 					Directory.Delete(dir);
+					Console.WriteLine($"Removed: {Path.GetFileName(dir)}");
 				}
 			}
 			return true;

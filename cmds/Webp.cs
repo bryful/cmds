@@ -103,7 +103,7 @@ namespace cmds
 				Console.WriteLine("Error: Target directory does not exist.");
 				return false;
 			}
-			var files = cmds.FileUtl.getImageFiles(m_TargetDirectory);
+			var files = cmds.FileUtl.ListFiles(m_TargetDirectory,"*",false);
 			foreach (var file in files)
 			{
 				string ext = System.IO.Path.GetExtension(file).ToLower();

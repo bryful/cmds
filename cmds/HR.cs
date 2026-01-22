@@ -131,6 +131,7 @@ namespace cmds
 					try
 					{
 						File.Move(filepath, newfilepath);
+						Console.WriteLine($"RenameFile:{Path.GetFileName(filepath)} >>{Path.GetFileName(newfilepath)}");
 					}
 					catch (Exception ex)
 					{
@@ -147,6 +148,7 @@ namespace cmds
 					try
 					{
 						Directory.Move(filepath, newfilepath);
+						Console.WriteLine($"RenameDir:{Path.GetFileName(filepath)} >>{Path.GetFileName(newfilepath)}");
 					}
 					catch (Exception ex)
 					{
@@ -158,7 +160,7 @@ namespace cmds
 			}
 			else
 			{
-				Console.WriteLine($"{filepath} Error! no target!");
+				Console.WriteLine($"{Path.GetFileName(filepath)} Error! no target!");
 				return false;
 			}
 		}
